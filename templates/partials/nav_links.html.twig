@@ -1,0 +1,28 @@
+{% macro loop(page) %}
+    {% for p in page.children.visible %}
+        {% set current_page = (p.active or p.activeChild) ? 'selected' : '' %}
+        {% if p.children.visible.count > 0 %}
+            <a href="{{ p.url }}" class="btn btn-link {{ current_page }} is-dropdown">
+                {{ p.menu }}
+                <div class="dropdown">
+                    {{ _self.loop(p) }}
+                </div>
+            </a>
+        {% else %}
+            <a href="{{ p.url }}" class="btn btn-link {{ current_page }}">{{ p.menu }}</a>
+        {% endif %}
+    {% endfor %}
+{% endmacro %}
+
+{% if theme_config.dropdown.enabled %}
+    {{ _self.loop(pages) }}
+{% else %}
+    {% for page in pages.children.visible %}
+        {% set current_page = (page.active or page.activeChild) ? 'current' : '' %}
+        <a href="{{ page.url }}" class="btn btn-link {{ current_page }}">{{ page.menu }}</a>
+    {% endfor %}
+{% endif %}
+{% for mitem in site.menu %}
+    <a href="{{ mitem.url }}" class="btn btn-link">{{ mitem.text }}</a>
+{% endfor %}
+

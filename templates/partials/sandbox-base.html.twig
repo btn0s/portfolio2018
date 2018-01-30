@@ -1,0 +1,61 @@
+{% set theme_config = attribute(config.themes, config.system.pages.theme) %}
+<!DOCTYPE html>
+<html lang="{{ grav.language.getActive ?: theme_config.default_lang }}">
+<head>
+    {% block head %}
+        <meta charset="utf-8" />
+        <title>{% if header.title %}{{ header.title|e('html') }} | {% endif %}{{ site.title|e('html') }}</title>
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% include 'partials/metadata.html.twig' %}
+
+        <link rel="icon" type="image/png" href="{{ url('theme://images/logo.png') }}" />
+        <link rel="canonical" href="{{ page.url(true, true) }}" />
+
+        {% block stylesheets %}
+            {% do assets.addCss('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', 99) %}
+            {% do assets.addCss('theme://assets/prod/css/sandbox.css', 98) %}
+        {% endblock %}
+        {{ assets.css() }}
+
+        {% block javascripts %}
+            {% do assets.addJs('jquery', 100) %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.6.3/svg.js" integrity="sha256-RjD0hT6o0FNHibN/3hjASETtNb7dFqT8/cbvvGi31jI=" crossorigin="anonymous"></script>
+        {% endblock %}
+        {{ assets.js() }}
+
+    {% endblock head%}
+</head>
+<body id="top" class="app {{ page.header.body_classes }}">
+
+{% block header %}
+    <header class="bn-sandbox-header">
+        <div class="navbar">
+            <section class="navbar-section">
+                <a href="./" class="btn btn-link">< Home</a>
+            </section>
+            <section class="navbar-center">
+                Sandbox
+            </section>
+            <section class="navbar-section">
+            </section>
+        </div>
+    </header>
+{% endblock %}
+
+{% block body %}
+    <main id="content">
+        {% block content %}{% endblock %}
+    </main>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block bottom %}
+    {{ assets.js('bottom') }}
+{% endblock %}
+
+</body>
+</html>

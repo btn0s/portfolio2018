@@ -1,0 +1,20 @@
+@import "../variables";
+
+@each $letter, $pos in $border-map {
+
+  .b#{$letter} {
+    @if ($pos == 'all') {
+      border: 1px solid $global-border-color !important;
+    } @else {
+      border-#{$pos}: 1px solid $global-border-color !important;
+    }
+  }
+}
+
+@mixin border($pos: 'all') {
+  @if ($pos == 'all') {
+    border: 1px solid $global-border-color !important;
+  } @else {
+    border-#{$pos}: 1px solid $global-border-color !important;
+  }
+}

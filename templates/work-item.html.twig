@@ -1,0 +1,40 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+    <div class="project">
+        <div class="project__header mb-lg">
+            <div class="columns">
+                <div class="column col-12">
+                    <h1>{{ page.header.headline }}</h1>
+                    <h5>{{ page.header.subheadline }}</h5>
+                </div>
+            </div>
+
+        </div>
+        <div class="project__cover-image">
+            <img src="{{ page.header.coverImg }}" class="img-responsive" alt="{{ page.header.coverImgAlt }}">
+        </div>
+        <div class="project__content pt-lg">
+            <div class="columns">
+                <div class="column col-8">
+                    {{ page.content }}
+                </div>
+                <div class="column col-4">
+                    <div class="work-item__details p-md bg-gray">
+                        {% if page.header.organization %}
+                            <div {% if page.header.role %}class="mb-sm"{% endif %}><b>Organization:</b> {{ page.header.organization }}</div>
+                        {% endif %}
+                        {% if page.header.role %}
+                            <div {% if page.header.duration %}class="mb-sm"{% endif %}><b>Role:</b> {{ page.header.role }}</div>
+                        {% else %}
+                            <div {% if page.header.duration %}class="mb-sm"{% endif %}><b>Role:</b> UX Designer</div>
+                        {% endif %}
+                        {% if page.header.duration %}
+                            <div><b>Duration:</b> {{ page.header.duration }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,74 @@
+title: Work Item
+@extends:
+  type: default
+  context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        content:
+          type: tab
+          title: PLUGIN_ADMIN.CONTENT
+          fields:
+            header.featured:
+              ordering@: header.title
+              type: toggle
+              label: Featured
+              highlight: 1
+              default: 0
+              options:
+                1: PLUGIN_ADMIN.YES
+                0: PLUGIN_ADMIN.NO
+              validate:
+                type: bool
+            header.is_active:
+              ordering@: header.featured
+              type: toggle
+              label: Active?
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.YES
+                0: PLUGIN_ADMIN.NO
+              validate:
+                type: bool
+            header.spacer1:
+              ordering@: header.is_active
+              type: spacer
+              title: Content
+            header.headline:
+              ordering@: header.spacer1
+              type: text
+              label: Headline
+              style: vertical
+            header.subheadline:
+              ordering@: header.headline
+              type: text
+              label: Subeadline
+              style: vertical
+            header.coverImg:
+              ordering@: header.subheadline
+              type: mediapicker
+              label: Cover Image
+              style: vertical
+            header.coverImgAlt:
+              ordering@: header.coverImg
+              type: text
+              label: Cover Image Alt Text
+              style: vertical
+            header.organization:
+              type: text
+              label: Organization (if any)
+              style: vertical
+            header.role:
+              type: text
+              label: Role
+              style: vertical
+            header.duration:
+              type: text
+              label: Duration
+              style: vertical

@@ -1,0 +1,106 @@
+// Import core framework
+@import "core/core";
+
+html {
+  background-color: #f4f6fa;
+}
+
+body {
+  margin: $spacing-2;
+  //background-color: #f4f6fa;
+}
+
+.bn-navbar {
+  padding: $spacing-3;
+}
+
+#content {
+  //padding: $spacing-3 $spacing-5;
+  //padding-bottom: $spacing-5;
+  min-height: 600px;
+  min-height: 60vh;
+  max-width: 1440px;
+}
+
+.bn-navbar-brand {
+  //font-family: 'Chewy', cursive;
+}
+
+.bn-footer {
+  padding: $spacing-3;
+}
+
+.bn-hero {
+  padding-top: $spacing-3;
+  padding-bottom: $spacing-4;
+  padding-left: $spacing-3;
+  padding-right: $spacing-3;
+}
+
+.bn-contact-form {
+  padding: $spacing-2
+}
+
+.bn-work-tile {
+  position: relative;
+  //margin-bottom: $spacing-3;
+}
+
+.bn-work-tile-image {
+  position: relative;
+  cursor: pointer;
+  background-color: #f4f6fa;
+
+  img {
+    width: 100%;
+  }
+
+  &::before {
+    content: '';
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    transition: all 300ms ease;
+  }
+
+  &::after {
+    content: 'View';
+    text-align: center;
+    color: $light-color;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-0%);
+    text-decoration: underline;
+    opacity: 0;
+    transition: all 300ms ease;
+  }
+
+  &:hover {
+    &::before, &::after {
+      opacity: 1;
+    }
+    &::after {
+      transform: translate(-50%,-50%);
+    }
+  }
+
+}
+
+.bn-work-tile-info {
+  padding: $spacing-2;
+  background-color: white;
+  position: absolute;
+  bottom: $spacing-2;
+  left: $spacing-2;
+}
+
+h1, .h1, h2, .h2 {
+  //font-family: 'Eczar', serif !important;
+}

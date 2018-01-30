@@ -1,0 +1,70 @@
+{% set theme_config = attribute(config.themes, config.system.pages.theme) %}
+<!DOCTYPE html>
+<html lang="{{ grav.language.getActive ?: theme_config.default_lang }}">
+<head>
+{% block head %}
+    <meta charset="utf-8" />
+    <title>{% if header.title %}{{ header.title|e('html') }} | {% endif %}{{ site.title|e('html') }}</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% include 'partials/metadata.html.twig' %}
+
+    <link rel="icon" type="image/png" href="{{ url('theme://images/logo.png') }}" />
+    <link rel="canonical" href="{{ page.url(true, true) }}" />
+    <link href="https://fonts.googleapis.com/css?family=Eczar" rel="stylesheet">
+
+    {% block stylesheets %}
+        {% do assets.addCss('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', 99) %}
+        {% do assets.addCss('theme://assets/prod/css/app.css', 98) %}
+    {% endblock %}
+    {{ assets.css() }}
+
+    {% block javascripts %}
+        {% do assets.addJs('jquery', 100) %}
+    {% endblock %}
+    {{ assets.js() }}
+
+{% endblock head%}
+</head>
+<body id="top" class="app {{ page.header.body_classes }}">
+
+{% block header %}
+    <header class="bn-navbar">
+        {% include 'partials/main_nav.html.twig' %}
+    </header>
+{% endblock %}
+
+{% block body %}
+    <main id="content">
+        {% block content %}{% endblock %}
+    </main>
+{% endblock %}
+
+{% block footer %}
+    <footer class="bn-footer bg-gray">
+        <div class="container">
+            <div class="columns">
+                <div class="column col-12">
+                    {% include 'partials/main_nav.html.twig' %}
+                </div>
+                <div class="column col-12">
+                    <p>
+                        I'm a UX Designer based in Phoenix, AZ.
+                        <br/>
+                        I explore, understand, and define great problems—
+                        <br/>
+                        and build them great solutions.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+{% endblock %}
+
+{% block bottom %}
+    {{ assets.js('bottom') }}
+{% endblock %}
+
+</body>
+</html>

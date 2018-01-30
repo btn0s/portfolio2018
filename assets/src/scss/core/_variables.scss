@@ -1,0 +1,45 @@
+// Color Overrides
+$primary-color: #3c59fa;
+//$light-color: #B9D3FF;
+
+// Spacing
+$spacing-base: 8px;
+$spacing-multiplier: 2;
+$spacing-micro: $spacing-base / $spacing-multiplier;
+$spacing-1: $spacing-base;
+$spacing-2: $spacing-base * $spacing-multiplier;
+$spacing-3: $spacing-2 * $spacing-multiplier;
+$spacing-4: $spacing-3 * $spacing-multiplier;
+$spacing-5: $spacing-4 * $spacing-multiplier;
+$spacing-sizes: (
+        "0": 0,
+        "xs": $spacing-micro,
+        "sm": $spacing-1,
+        "md": $spacing-2,
+        "lg": $spacing-3,
+        "xl": $spacing-4,
+        "xxl": $spacing-5
+);
+
+// Borders
+$global-border-color: rgba(99,114,130,0.16);
+$border-map: (
+        t: 'top',
+        b: 'bottom',
+        r: 'right',
+        l: 'left',
+        a: 'all',
+        x: 'x-axis',
+        y: 'y-axis'
+);
+
+// Positions (used for generating classes)
+$position-map: (
+        t: 'top',
+        b: 'bottom',
+        r: 'right',
+        l: 'left',
+        a: 'all',
+        x: 'x-axis',
+        y: 'y-axis'
+);

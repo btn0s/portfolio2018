@@ -1,0 +1,30 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+    <div class="bn-hero">
+        <h1>
+            {{ page.header.headline|markdown }}
+        </h1>
+        <h5>
+            {{ page.header.subheadline|markdown }}
+        </h5>
+    </div>
+    <div class="bn-section">
+        <h3 class="ml-lg">Recent Work</h3>
+        {% for child in page.find('/work').children %}
+            {% if child.header.is_active and child.header.featured %}
+                <div class="bn-work-tile">
+                    <div class="bn-work-tile-image" onclick="window.location = '{{ child.url }}'">
+                        <img src="{{ child.header.coverImg }}" class="img-responsive img-fit-cover" alt="{{ child.header.coverImgAlt }}" style="height: 500px;">
+                    </div>
+                    <div class="bn-work-tile-info">
+                        <a href="{{ child.url }}">
+                            <h4 class="bn-work-tile-title">{{ child.header.title }}</h4>
+                        </a>
+                        <p class="bn-work-tile-subtitle">{{ child.header.subheadline }}</p>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}

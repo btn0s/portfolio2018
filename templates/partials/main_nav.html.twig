@@ -1,0 +1,10 @@
+<div class="navbar">
+    <section class="navbar-section">
+        <a href="{{ base_url == '' ? '/' : base_url }}" class="navbar-brand bn-navbar-brand mr-2">Brendan T. Norris</a>
+    </section>
+    <section class="navbar-section">
+        {% block header_navigation %}
+            {% include 'partials/nav_links.html.twig' %}
+        {% endblock %}
+    </section>
+</div>

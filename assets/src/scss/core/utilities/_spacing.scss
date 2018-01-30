@@ -1,0 +1,77 @@
+@import "../variables";
+
+@each $size, $value in $spacing-sizes {
+  @each $label, $pos in $position-map {
+    @if ($pos == 'all') {
+      .p-#{$size} {
+        padding: $value !important;
+      }
+    } @else if($pos == 'x-axis') {
+      .px-#{$size} {
+        padding-left: map-get($spacing-sizes, $size) !important;
+        padding-right: map-get($spacing-sizes, $size) !important;
+      }
+    } @else if($pos == 'y-axis') {
+      .py-#{$size} {
+        padding-top: map-get($spacing-sizes, $size) !important;
+        padding-bottom: map-get($spacing-sizes, $size) !important;
+      }
+    } @else {
+      .p#{$label}-#{$size} {
+        padding-#{$pos}: $value !important;
+      }
+    }
+  }
+}
+
+@mixin padding($size, $pos: 'all') {
+  @if ($pos == 'all') {
+    padding: map_get($spacing-sizes, $size) !important;
+  } @else if($pos == 'x-axis') {
+    padding-left: map-get($spacing-sizes, $size);
+    padding-right: map-get($spacing-sizes, $size);
+  } @else if($pos == 'y-axis') {
+    padding-top: map-get($spacing-sizes, $size);
+    padding-bottom: map-get($spacing-sizes, $size);
+  } @else {
+    padding-#{$pos}: map_get($spacing-sizes, $size) !important;
+  }
+}
+
+@each $size, $value in $spacing-sizes {
+  @each $label, $pos in $position-map {
+    @if ($pos == 'all') {
+      .m-#{$size} {
+        margin: $value !important;
+      }
+    } @else if($pos == 'x-axis') {
+      .mx-#{$size} {
+        margin-left: map-get($spacing-sizes, $size) !important;
+        margin-right: map-get($spacing-sizes, $size) !important;
+      }
+    } @else if($pos == 'y-axis') {
+      .my-#{$size} {
+        margin-top: map-get($spacing-sizes, $size) !important;
+        margin-bottom: map-get($spacing-sizes, $size) !important;
+      }
+    } @else {
+      .m#{$label}-#{$size} {
+        margin-#{$pos}: $value !important;
+      }
+    }
+  }
+}
+
+@mixin margin($size, $pos: 'all') {
+  @if ($pos == 'all') {
+    margin: map_get($spacing-sizes, $size);
+  } @else if($pos == 'x-axis') {
+    margin-left: map-get($spacing-sizes, $size);
+    margin-right: map-get($spacing-sizes, $size);
+  } @else if($pos == 'y-axis') {
+    margin-top: map-get($spacing-sizes, $size);
+    margin-bottom: map-get($spacing-sizes, $size);
+  } @else {
+    margin-#{$pos}: map_get($spacing-sizes, $size);
+  }
+}

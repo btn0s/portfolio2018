@@ -1,0 +1,60 @@
+// Import core framework
+@import "core/core";
+
+#content {
+  padding: $spacing-3 $spacing-5;
+  padding-bottom: $spacing-5;
+  min-height: 600px;
+  min-height: 60vh;
+  max-width: 1440px;
+  position: relative;
+}
+
+.loading {
+  #loading-overlay {
+    display: block !important;
+    //opacity: 1;
+  }
+}
+
+#loading-overlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255,255,255,0.5);
+  padding-top: $spacing-5;
+}
+
+.bn-sandbox-header {
+  box-shadow: 0 1px rgba(99,114,130,0.16);
+}
+
+.sandbox-item {
+  position: relative;
+  padding: $spacing-3;
+  @include border('all');
+}
+
+a {
+  &.container-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    color: inherit !important;
+  }
+}
+
+#buffer {
+  height: 0px;
+  width: 0px;
+  overflow: hidden;
+}
+
+.mockup-gen {
+  position: relative;
+}

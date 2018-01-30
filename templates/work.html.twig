@@ -1,0 +1,24 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+
+    <div class="columns col-gapless">
+        {% for child in page.children %}
+            {% if child.header.is_active %}
+                <div class="column col-6">
+                    <div class="bn-work-tile">
+                        <div class="bn-work-tile-image" onclick="window.location = '{{ child.url }}'">
+                            <img src="{{ child.header.coverImg }}" class="img-responsive img-fit-cover" alt="{{ child.header.coverImgAlt }}" style="height: 300px;">
+                        </div>
+                        <div class="bn-work-tile-info">
+                            <a href="{{ child.url }}">
+                                <h5 class="bn-work-tile-title">{{ child.header.title }}</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+{% endblock %}
